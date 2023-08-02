@@ -4,6 +4,8 @@ module.exports = (sequelize) => {
   sequelize.define(
     "Genres",
     {
+
+      // si hay conflictos ccambiar genres por Genres, como estaba antes
       id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
