@@ -2,13 +2,14 @@ const { Router } = require("express");
 const getVgByIdHandler = require("../handlers/getVgByIdHandler");
 const getVgHandler = require("../handlers/getVgHandler");
 const postVgHandler = require("../handlers/postVgHandler");
+const getVgByQueryHandler = require("../handlers/getVgByQueryHandler");
 const videogamesRouter = Router();
 
 videogamesRouter.get("/", getVgHandler);
 
-videogamesRouter.get("/:idVideogame", getVgByIdHandler);
+videogamesRouter.get("/name", getVgByQueryHandler);
 
-videogamesRouter.get("/");
+videogamesRouter.get("/:idVideogame", getVgByIdHandler);
 
 videogamesRouter.post("/", postVgHandler);
 

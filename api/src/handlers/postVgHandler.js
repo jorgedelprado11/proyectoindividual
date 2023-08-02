@@ -7,15 +7,16 @@ const postVg = require("../controllers/postVg");
 
 const postVgHandler = async (req, res) => {
   try {
-    const { name, description, released, image, rating, plataforms } = req.body;
-
+    const { name, description, released, image, rating, plataforms, genres } = req.body;
+    console.log(req.body);
     const response = await postVg(
       name,
       description,
       released,
       image,
       rating,
-      plataforms
+      plataforms,
+      genres
     );
     res.status(200).json(response);
   } catch (error) {

@@ -6,7 +6,6 @@ const getById = require("../controllers/getVgById");
 // Tiene que incluir los datos del género del videojuego al que está asociado.
 // Debe funcionar tanto para los videojuegos de la API como para los de la base de datos.
 const getVgByIdHandler = async (req, res) => {
-  // me falta ver como hacer para que funcione con los id uuid
   try {
     const { idVideogame } = req.params;
 
