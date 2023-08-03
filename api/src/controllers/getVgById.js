@@ -2,16 +2,26 @@ const URL = "https://api.rawg.io/api/games";
 const axios = require("axios");
 require("dotenv").config();
 const { API_KEY } = process.env;
-const { Videogame } = require("../db");
+const { Videogame, Genres } = require("../db");
 
 const getById = async (idVideogame) => {
   try {
     //esto va primero, xq si existe el id en la db no tiene que entrar a la api a buscar, si no existe en la db, busca en la api, si no existe en la api -> throw error
     if (idVideogame.includes("-")) {
-      const videogame = await Videogame.findByPk(idVideogame);
-      if (videogame) {
-        return videogame;
-      }
+      const videogameDB = await Videogame.findByPk(idVideogame, {
+        include: Genres,
+      });
+
+      if (!videogameDB)
+        throw Error(`No existe videojuego con el ID ${idVideogame}`);
+
+      const videogame = {
+        id: videogameDB.id,
+        name: videogameDB.name,
+        rating: videogameDB.rating,
+        genres: videogameDB.Genres.map((genre) => genre.name).join(", "),
+      };
+      return videogame;
     }
 
     const { data } = await axios(`${URL}/${idVideogame}?key=${API_KEY}`);
