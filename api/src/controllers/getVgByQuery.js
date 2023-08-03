@@ -17,13 +17,14 @@ const getVgByQuery = async (name) => {
 
     return videogamesFound;
   } catch (error) {
-    throw Error(`No se encontró ningun juego con el nombre ${name}`);
+    throw Error(`No se encontró ningun videojuego con el nombre ${name}`);
   }
 };
 
 const getVgDbByQuery = async (name) => {
   const auxVgDb = await Videogame.findAll({
     where: { name: { [Op.iLike]: `%${name}%` } },
+    include: Genres, // Incluimos la relación "Genres" para obtener los géneros asociados a cada videojuego
   });
 
   const videogamesDbFound = auxVgDb.map((videogame) => {
@@ -31,7 +32,8 @@ const getVgDbByQuery = async (name) => {
       id: videogame.id,
       name: videogame.name,
       rating: videogame.rating,
-      genres: videogame.genres.map((genre) => genre.name),
+      genres: videogame.Genres.map((genre) => genre.name).join(', '),
+      // Accedemos a los géneros directamente desde la relación
     };
   });
   return videogamesDbFound;
@@ -46,7 +48,7 @@ const getVgApiByQuery = async (name) => {
       id: videogame.id,
       name: videogame.name,
       rating: videogame.rating,
-      genres: videogame.genres.map((genre) => genre.name),
+      genres: videogame.genres.map((genre) => genre.name).join(', '),
     };
   });
   return videogamesApiFound;

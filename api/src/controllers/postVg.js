@@ -25,6 +25,7 @@ const postVg = async (
     if (findVideogame.length) throw Error("El nombre ya esta en uso");
 
     // creo el nuevo videojuego
+    // hago destructuring del findOrCreate que me devuelve un array con el objeto creado en la primera posicion y un booleando en la segunda 
     // const [newVideogame, setNewVideogame] = await Videogame.findOrCreate({
     //   where: {
     //     name,
@@ -45,7 +46,7 @@ const postVg = async (
     // return newVideogame;
 
     //puedo hacerlo asi tmb
-    const newVideogame = new Videogame({
+    const newVideogame = Videogame.build({
       name,
       description,
       released,
