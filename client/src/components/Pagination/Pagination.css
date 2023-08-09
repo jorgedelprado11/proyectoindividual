@@ -1,0 +1,23 @@
+.is-disabled {
+  cursor: not-allowed;
+  background-color: rgb(9, 9, 9) !important;
+  pointer-events: none;
+}
+
+.pagination-container{
+  display: flex;
+  margin: 1rem auto 0.5rem auto;
+}
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+li{
+    cursor: pointer;
+    margin: 0 0.1rem;
+}
+.pagination{
+    display: flex;
+    margin: 0 0.2rem;
+}
