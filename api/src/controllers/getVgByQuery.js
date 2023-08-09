@@ -30,9 +30,13 @@ const getVgDbByQuery = async (name) => {
   const videogamesDbFound = auxVgDb.map((videogame) => {
     return {
       id: videogame.id,
+      image: videogame.background_image,
       name: videogame.name,
       rating: videogame.rating,
-      genres: videogame.Genres.map((genre) => genre.name).join(', '),
+      platforms: videogame.platforms
+        .map((info) => info.platform.name)
+        .join(", "),
+      genres: videogame.Genres.map((genre) => genre.name).join(", "),
       // Accedemos a los géneros directamente desde la relación
     };
   });
@@ -46,9 +50,13 @@ const getVgApiByQuery = async (name) => {
   const videogamesApiFound = data.results.map((videogame) => {
     return {
       id: videogame.id,
+      image: videogame.background_image,
       name: videogame.name,
       rating: videogame.rating,
-      genres: videogame.genres.map((genre) => genre.name).join(', '),
+      platforms: videogame.platforms
+        .map((info) => info.platform.name)
+        .join(", "),
+      genres: videogame.genres.map((genre) => genre.name).join(", "),
     };
   });
   return videogamesApiFound;
