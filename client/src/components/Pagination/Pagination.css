@@ -1,12 +1,8 @@
-.is-disabled {
-  cursor: not-allowed;
-  background-color: rgb(9, 9, 9) !important;
-  pointer-events: none;
-}
 
 .pagination-container{
   display: flex;
   margin: 1rem auto 0.5rem auto;
+  font-size: 0.9rem;
 }
 ul {
     list-style: none;
@@ -19,5 +15,26 @@ li{
 }
 .pagination{
     display: flex;
-    margin: 0 0.2rem;
+    margin: 0 0.3rem;
+}
+
+.pagination-btn{
+  cursor: pointer;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  border: 1px solid grey;
+  font-size: 0.8rem;
+ 
+}
+.pagination-link{
+  color: bisque;
+}
+.is-disabled {
+  cursor: not-allowed;
+  background-color: rgb(209, 193, 193) !important;
+  pointer-events: none;
+  color: black;
+}
+.is-current {
+  color: blueviolet;
 }

@@ -51,16 +51,7 @@ const Form = () => {
             value={input.value}
             onChange={handleCHange}
           />
-          <span>{error.name}</span>
-        </div>
-        <div>
-          <label>Released</label>
-          <input
-            name="released"
-            type="text"
-            value={input.value}
-            onChange={handleCHange}
-          />
+          {error.name && <p className="errors">{error.name}</p>}
         </div>
         <div>
           <label>Image</label>
@@ -70,15 +61,17 @@ const Form = () => {
             value={input.value}
             onChange={handleCHange}
           />
+          {error.image && <p className="errors">{error.image}</p>}
         </div>
         <div>
-          <label>Rating</label>
-          <input
-            name="rating"
-            type="number"
+          <label>Description</label>
+          <textarea
+            name="description"
+            type="text"
             value={input.value}
             onChange={handleCHange}
           />
+          {error.description && <p className="errors">{error.description}</p>}
         </div>
         <div>
           <label>Platforms</label>
@@ -88,6 +81,27 @@ const Form = () => {
             value={input.value}
             onChange={handleCHange}
           />
+          {error.platforms && <p className="errors">{error.platforms}</p>}
+        </div>
+        <div>
+          <label>Released</label>
+          <input
+            name="released"
+            type="date"
+            value={input.value}
+            onChange={handleCHange}
+          />
+          {error.released && <p className="errors">{error.released}</p>}
+        </div>
+        <div>
+          <label>Rating</label>
+          <input
+            name="rating"
+            type="number"
+            value={input.value}
+            onChange={handleCHange}
+          />
+          {error.rating && <p className="errors">{error.rating}</p>}
         </div>
         <div>
           <label>Genres</label>
@@ -97,8 +111,9 @@ const Form = () => {
             value={input.value}
             onChange={handleCHange}
           />
+          {error.genres && <p className="errors">{error.genres}</p>}
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Create</button>
       </form>
     </>
   );

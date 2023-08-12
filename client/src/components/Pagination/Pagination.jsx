@@ -24,18 +24,17 @@ const Pagination = ({
     // esta funcion es para que funcione el hacer click a un numero especifico y me lleve directo a esa page
     setCurrentPage(n);
   };
-    console.log('esta es la pag actual >>',currentPage);
+  // console.log('esta es la pag actual >>',currentPage);
+
 
   return (
     <>
       <nav className="pagination-container">
         <button
-          className={`pagination-previous ${
-            currentPage === 1 ? "is-disabled" : ""
-          }`}
+          className={`pagination-btn ${currentPage === 1 ? "is-disabled" : ""}`}
           onClick={onPreviousPage}
         >
-          {'<<'}
+          Previous
         </button>
         <ul className="pagination">
           {pageNumbers.map((noPage) => (
@@ -52,12 +51,12 @@ const Pagination = ({
           ))}
         </ul>
         <button
-          className={`pagination-previous ${
+          className={`pagination-btn ${
             currentPage >= pageNumbers.length ? "is-disabled" : ""
           }`}
           onClick={onNextPage}
         >
-          {'>>'}
+          Next
         </button>
       </nav>
     </>

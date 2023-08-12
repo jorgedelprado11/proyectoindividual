@@ -40,8 +40,10 @@ const getById = async (idVideogame) => {
     const videogame = {
       id: data.id,
       name: data.name,
-      description: data.description,
+      image: data.background_image,
+      description: data.description_raw,
       rating: data.rating,
+      genres: data.genres.map((genre) => genre.name).join(", "),
       platforms: data.platforms.map((info) => info.platform.name).join(", "),
       
     };

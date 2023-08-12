@@ -64,7 +64,7 @@ const Card = ({ videogame }) => {
       </div>
       {/* <h3 className="platforms">{platforms}</h3> */}
       <Link to={`/${id}`} className="link">
-        Ver Más
+        Ver Más 
       </Link>
     </div>
     // </Link>

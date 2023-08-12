@@ -5,8 +5,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getVideogames } from "../../redux/actions/actions";
 
 import Cards from "../../components/Cards/Cards";
-import Navbar from "./../../components/Navbar/Navbar";
 import Pagination from "../../components/Pagination/Pagination";
+import FilterGenres from "./../../components/Filters/FilterGenres";
+import FilterOrigin from "./../../components/Filters/FilterOrigin";
+import OrderByName from "./../../components/Filters/OrderByName";
+import OrderByRating from "./../../components/Filters/OrderByRating";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -16,8 +19,9 @@ const Home = () => {
   // const [games, setGames] = useState([]); //estado inicial array vacio
   // inicialmente iba a manejar los juegos con un estado local, hasta que me di cuenta que en realidad arriba en allVideogames estoy trayendo al estado global
   const totalGames = allVideogames.length; // cantidad de juegos
-  const [gamesPerPage, setGamesPerPage] = useState(15); // inicialmente hay 15 juegos por page si quiero lo modifico 
+  const [gamesPerPage, setGamesPerPage] = useState(15); // inicialmente hay 15 juegos por page si quiero lo modifico
   const [currentPage, setCurrentPage] = useState(1); // pagina inicial 1
+  const [loading, setLoading] = useState(true);
 
   const lastIndex = currentPage * gamesPerPage; // 15 para la primer pag (1*15)
 
@@ -25,30 +29,39 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getVideogames());
-
     // return(()=>{clear}) // con esto hago el desmontaje
   }, [dispatch]);
 
+  setTimeout(() => {
+    setLoading(false);
+  }, 6000);
   return (
     <div className="home">
-      <Navbar />
+      <div className="container-filters">
+        <OrderByRating />
+        <OrderByName />
+        <FilterOrigin />
+        <FilterGenres />
+      </div>
       <Pagination
         gamesPerPage={gamesPerPage}
         totalGames={totalGames}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
+
       <Cards
         allVideogames={allVideogames}
         lastIndex={lastIndex}
         firstIndex={firstIndex}
       />
-      <Pagination
+
+      {/* <Pagination
         gamesPerPage={gamesPerPage}
         totalGames={totalGames}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-      />
+      /> */}
     </div>
   );
 };

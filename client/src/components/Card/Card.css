@@ -6,7 +6,7 @@
   border: 1px solid grey;
   border-radius: 0.5rem;
   padding: 1.8rem;
-  cursor: pointer;
+  /* cursor: pointer; */
   -moz-osx-font-smoothing: grayscale;
   backface-visibility: hidden;
   transform: translateZ(0);
