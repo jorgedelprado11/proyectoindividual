@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGenres, genresFilter } from "../../redux/actions/actions";
-
+import "./Filters.css";
 
 const FilterGenres = () => {
   const genres = useSelector((state) => state.genres);
@@ -19,17 +19,20 @@ const FilterGenres = () => {
 
   return (
     <>
-      <select className="selector" onChange={onSelectedChange}>
-      <option value="" hidden>Select Genre</option>
-        <option value="AllGenres">
-          All Genres
-        </option>
-        {genres.map((genre) => (
-          <option key={genre.name} value={genre.name}>
-            {genre.name}
+      <div className="container-filter">
+        <label className="label">Filter By Genres: </label>
+        <select className="selector" onChange={onSelectedChange}>
+          <option value="" hidden>
+            Select
           </option>
-        ))}
-      </select>
+          <option value="AllGenres">All Genres</option>
+          {genres.map((genre) => (
+            <option key={genre.name} value={genre.name}>
+              {genre.name}
+            </option>
+          ))}
+        </select>
+      </div>
     </>
   );
 };

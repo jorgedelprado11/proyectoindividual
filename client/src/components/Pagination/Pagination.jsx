@@ -26,7 +26,8 @@ const Pagination = ({
   };
   // console.log('esta es la pag actual >>',currentPage);
 
-
+  pageNumbers.length === 1 && setCurrentPage(1);
+ 
   return (
     <>
       <nav className="pagination-container">

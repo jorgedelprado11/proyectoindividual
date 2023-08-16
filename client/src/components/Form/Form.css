@@ -1,0 +1,50 @@
+.form-create {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.div-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+}
+.div-genres {
+  width: 30rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.block-genres {
+  display: flex;
+  flex-direction: row;
+  width: 8rem;
+  margin: 0;
+  padding: 0;
+}
+.fieldset{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.legend {
+  margin: auto;
+}
+
+.form-btn {
+  cursor: pointer;
+  border-radius: 0.3rem;
+  background-color: transparent;
+  border: 1px solid grey;
+  font-size: 0.9rem;
+  margin-top: 0.6rem;
+}
+
+.errors {
+  font-size: 0.8rem;
+  color: red;
+  margin: auto;
+  padding: auto;
+}

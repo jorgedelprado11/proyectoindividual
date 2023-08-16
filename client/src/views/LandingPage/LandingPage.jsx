@@ -5,9 +5,9 @@ const LandingPage = () => {
   return (
     <div className="landing">
       <div className="contenedor">
-        <h1>Bienvenido a la SPA de VideoGames</h1>
+        <h1>Welcome to the Videogames App</h1>
         <Link to={"/home"}>
-          <button className="btn">Ingresar</button>
+          <button className="btn">Enter</button>
         </Link>
       </div>
     </div>

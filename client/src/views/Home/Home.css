@@ -1,5 +1,15 @@
 .home {
+  max-width: 1450px;
+  background-color: var(--primary);
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  align-items: flex-start;
+}
+.principal {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  margin: auto;
+  padding: 0;
 }

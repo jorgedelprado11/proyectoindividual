@@ -1,11 +1,15 @@
 :root {
+  --primary: #212529;
+  --secondary: #343a40;
+  --tertialy: #adb5bd;
+
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: var(--primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -22,13 +26,6 @@ a {
 a:hover {
   color: #535bf2;
 }
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-
 
 @media (prefers-color-scheme: light) {
   :root {

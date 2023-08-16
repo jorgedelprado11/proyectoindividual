@@ -7,7 +7,7 @@ const postVg = require("../controllers/postVg");
 
 const postVgHandler = async (req, res) => {
   try {
-    const { name, description, released, image, rating, plataforms, genres } =
+    const { name, description, released, image, rating, platforms, genres } =
       req.body;
     // console.log(req.body);
     const response = await postVg(
@@ -16,7 +16,7 @@ const postVgHandler = async (req, res) => {
       released,
       image,
       rating,
-      plataforms,
+      platforms,
       genres
     );
     res.status(200).json({ newVideoGame: response });

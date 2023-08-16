@@ -1,14 +1,30 @@
 import "./SearchBar.css";
 
-const SearchBar = ({ handleChange, handleSubmit }) => {
+const SearchBar = ({
+  handleChange,
+  handleSubmit,
+  searchName,
+  setSearchName,
+}) => {
   return (
-    <div className="search-bar">
-      <form onChange={(event) => handleChange(event)}>
-        <input type="search" placeholder="Busqueda" />
-        <button type="submit" onClick={handleSubmit}>
-          Buscar
-        </button>
-      </form>
+    <div className="searchbar-container">
+      <input
+        className="searchbar"
+        type="search"
+        placeholder="Search"
+        value={searchName}
+        onChange={(event) => handleChange(event)}
+      />
+      <button
+        className="searchbar-btn"
+        type="submit"
+        onClick={(event) => {
+          handleSubmit(event);
+          setSearchName("");
+        }}
+      >
+        Search
+      </button>
     </div>
   );
 };

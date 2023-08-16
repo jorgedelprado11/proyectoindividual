@@ -1,119 +1,197 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Form.css";
+import validation from "./validation";
+import { addVideogame, fetchGenres } from "../../redux/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Form = () => {
+  const genres = useSelector((state) => state.genres);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchGenres());
+  }, [dispatch]);
+
+  const [errors, setErrors] = useState({});
+
+  // const [checkBox, setChexBox] = useState([]);
+
   const [input, setInput] = useState({
     name: "",
     released: "",
     image: "",
+    description: "",
     rating: 0,
     platforms: "",
-    genres: "",
+    genres: [],
   });
 
-  const [error, setError] = useState({
-    name: "",
-    released: "",
-    image: "",
-    rating: 0,
-    platforms: "",
-    genres: "",
-  });
+  const handleChange = (event) => {
+    //creo una constante value que tome el valor del event target value, si es rating me lo parsee a float para no tener conflicto con el back
+    const value =
+      event.target.name === "rating"
+        ? parseFloat(event.target.value)
+        : event.target.value;
+    setInput({
+      ...input,
+      [event.target.name]: value,
+    });
+    const validateErrors = validation({
+      ...input,
+      [event.target.name]: value,
+    });
 
-  const validate = (input) => {
-    if (!input.name)
-      setError({
-        ...error,
-        name: "el campo no puede estar vacio ",
-      });
-    setError({
-      ...error,
+    setErrors(validateErrors);
+  };
+
+  //handleSubmit
+  const handleSubmit = (event) => {
+    dispatch(addVideogame(input));
+    setInput({
       name: "",
+      released: "",
+      image: "",
+      description: "",
+      rating: 0,
+      platforms: "",
+      genres: [],
     });
   };
 
-  const handleCHange = (event) => {
+  const handleCheck = (event) => {
+    //   setChexBox([...checkBox, event.target.name]);
+
+    //   setInput({
+    //     ...input,
+    //     genres: [...checkBox],
+    //   });
+    // };
+
     setInput({
       ...input,
-      [event.target.name]: event.target.name,
+      genres: [...input.genres, event.target.value],
     });
-    validate({ ...input, [event.target.value]: event.target.value });
+    const validateErrors = validation({
+      ...input,
+      genres: input.genres,
+    });
+    setErrors(validateErrors);
   };
 
   return (
     <>
-      <form onSubmit={""}>
-        <div>
-          <label>Name</label>
+      <form className="form-create" onSubmit={handleSubmit}>
+        <div className="div-input">
+          <label>Name: </label>
           <input
             name="name"
             type="text"
-            value={input.value}
-            onChange={handleCHange}
+            value={input.name}
+            onChange={handleChange}
           />
-          {error.name && <p className="errors">{error.name}</p>}
+          {errors.name && <p className="errors">{errors.name}</p>}
         </div>
-        <div>
-          <label>Image</label>
+        <div className="div-input">
+          <label>Image: </label>
           <input
             name="image"
             type="text"
-            value={input.value}
-            onChange={handleCHange}
+            value={input.image}
+            onChange={handleChange}
           />
-          {error.image && <p className="errors">{error.image}</p>}
+          {errors.image && <p className="errors">{errors.image}</p>}
         </div>
-        <div>
-          <label>Description</label>
+        <div className="div-input">
+          <label>Description: </label>
           <textarea
             name="description"
             type="text"
-            value={input.value}
-            onChange={handleCHange}
+            value={input.description}
+            onChange={handleChange}
           />
-          {error.description && <p className="errors">{error.description}</p>}
+          {errors.description && <p className="errors">{errors.description}</p>}
         </div>
-        <div>
-          <label>Platforms</label>
+        <div className="div-input">
+          <label>Platforms: </label>
           <input
             name="platforms"
             type="text"
-            value={input.value}
-            onChange={handleCHange}
+            value={input.platforms}
+            onChange={handleChange}
           />
-          {error.platforms && <p className="errors">{error.platforms}</p>}
+          {errors.platforms && <p className="errors">{errors.platforms}</p>}
         </div>
-        <div>
-          <label>Released</label>
+        <div className="div-input">
+          <fieldset className="fieldset">
+            <legend className="legend">Select the Genres: </legend>
+            <div className="div-genres">
+              {genres.map((genre) => (
+                <div className="block-genres" key={genre.name}>
+                  <label>
+                    <input
+                      type="checkbox"
+                      id={genre.name}
+                      name={genre.name}
+                      value={genre.name}
+                      onChange={(event) => handleCheck(event)}
+                    />
+                    {genre.name}
+                  </label>
+                </div>
+              ))}
+            </div>
+
+            {/* 
+            <select onChange={handleChange} multiple="true" name="genres">
+              {genres.map((genre) => (
+                <option key={genre.name} value={genre.name}>
+                  {genre.name}
+                </option>
+              ))}
+            </select> */}
+
+            {/* <input
+            name="genres"
+            type="text"
+            value={input.genres}
+            onChange={handleChange}
+          /> */}
+            {errors.genres && <p className="errors">{errors.genres}</p>}
+          </fieldset>
+        </div>
+        <div className="div-input">
+          <label>Released: </label>
           <input
             name="released"
             type="date"
-            value={input.value}
-            onChange={handleCHange}
+            value={input.released}
+            onChange={handleChange}
           />
-          {error.released && <p className="errors">{error.released}</p>}
+          {errors.released && <p className="errors">{errors.released}</p>}
         </div>
-        <div>
-          <label>Rating</label>
+        <div className="div-input">
+          <label>Rating: </label>
           <input
             name="rating"
-            type="number"
-            value={input.value}
-            onChange={handleCHange}
+            type="range"
+            min="0.0"
+            max="5.0"
+            step="0.01"
+            value={input.rating}
+            onChange={handleChange}
           />
-          {error.rating && <p className="errors">{error.rating}</p>}
+          {errors.rating && <p className="errors">{errors.rating}</p>}
         </div>
-        <div>
-          <label>Genres</label>
-          <input
-            name="genres"
-            type="text"
-            value={input.value}
-            onChange={handleCHange}
-          />
-          {error.genres && <p className="errors">{error.genres}</p>}
-        </div>
-        <button type="submit">Create</button>
+
+        <button
+          type="submit"
+          className={` form-btn ${
+            Object.keys(errors).length || input.name === "" ? "is-disabled" : ""
+          }`}
+        >
+          Create
+        </button>
       </form>
     </>
   );

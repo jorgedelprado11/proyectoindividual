@@ -28,7 +28,7 @@ export const getById = (id) => {
 
   return async (dispatch) => {
     const { data } = await axios(endpoint);
-
+    // console.log(data);
     return dispatch({
       type: GET_BY_ID,
       payload: data,
@@ -50,10 +50,11 @@ export const getByName = (name) => {
 };
 
 export const addVideogame = (videogame) => {
-  const endpoint = "http://localhost:3001/videogames";
+  // console.log(videogame);
+  const endpoint = "http://localhost:3001/videogames/";
 
   return async (dispatch) => {
-    const { data } = await axios.post(endpoint);
+    const { data } = await axios.post(endpoint, videogame);
     // console.log(data);
     return dispatch({
       type: ADD_VIDEOGAME,

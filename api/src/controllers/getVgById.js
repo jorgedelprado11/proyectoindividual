@@ -18,12 +18,13 @@ const getById = async (idVideogame) => {
       const videogame = {
         id: videogameDB.id,
         name: videogameDB.name,
+        image: videogameDB.image,
+        description: videogameDB.description,
         rating: videogameDB.rating,
         genres: videogameDB.Genres.map((genre) => genre.name).join(", "),
-        platforms: videogame.platforms
-        .map((info) => info.platform.name)
-        .join(", "),
+        platforms: videogameDB.platforms,
       };
+
       return videogame;
     }
 
@@ -45,7 +46,6 @@ const getById = async (idVideogame) => {
       rating: data.rating,
       genres: data.genres.map((genre) => genre.name).join(", "),
       platforms: data.platforms.map((info) => info.platform.name).join(", "),
-      
     };
     return videogame;
   } catch (error) {

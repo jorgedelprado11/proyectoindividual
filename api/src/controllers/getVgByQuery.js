@@ -33,9 +33,7 @@ const getVgDbByQuery = async (name) => {
       image: videogame.background_image,
       name: videogame.name,
       rating: videogame.rating,
-      platforms: videogame.platforms
-        .map((info) => info.platform.name)
-        .join(", "),
+      platforms: videogame.platforms,
       genres: videogame.Genres.map((genre) => genre.name).join(", "),
       // Accedemos a los géneros directamente desde la relación
     };

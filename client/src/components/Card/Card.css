@@ -2,7 +2,7 @@
   width: 15rem;
   display: flex;
   flex-direction: column;
-  background-color: rgb(40, 39, 42);
+  background-color: var(--secondary);
   border: 1px solid grey;
   border-radius: 0.5rem;
   padding: 1.8rem;

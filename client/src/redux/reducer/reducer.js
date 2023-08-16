@@ -15,9 +15,8 @@ let initialState = {
   allVideogames: [],
   backup: [],
   videogame: {},
-  filteredVideogames: [],
+  newVideogame: [],
   genres: [],
-  filteredGenres: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -41,7 +40,7 @@ const rootReducer = (state = initialState, action) => {
     case ADD_VIDEOGAME:
       return {
         ...state,
-        allVideogames: action.payload,
+        newVideogame: action.payload,
       };
     case FETCH_GENRES:
       return {
@@ -82,10 +81,14 @@ const rootReducer = (state = initialState, action) => {
       let orderNames = state.backup;
       action.payload === "Descendente"
         ? orderNames.sort(
-            (a, b) => b.name?.charCodeAt(0) - a.name?.charCodeAt(0)
+            (a, b) =>
+              b.name?.toUpperCase().charCodeAt(0) -
+              a.name?.toUpperCase().charCodeAt(0)
           )
         : orderNames.sort(
-            (a, b) => a.name?.charCodeAt(0) - b.name?.charCodeAt(0)
+            (a, b) =>
+              a.name?.toUpperCase().charCodeAt(0) -
+              b.name?.toUpperCase().charCodeAt(0)
           );
       return {
         ...state,

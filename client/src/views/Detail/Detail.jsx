@@ -16,13 +16,55 @@ const Detail = () => {
   return (
     <>
       {!videogame ? null : (
-        <div>
-          <h1>{videogame.name}</h1>
-          <img src={videogame.image} alt={videogame.name} />
-          <p>{videogame.description}</p>
-          <h3>{videogame.rating}</h3>
-          <h3>{videogame.platforms}</h3>
-          <h3>{videogame.genres}</h3>
+        <div className="detail-container">
+          <div className="detail-grid">
+            <div>
+              <img
+                className="detail-img"
+                src={videogame.image}
+                alt={videogame.name}
+              />
+              <div className="detail-extrainfo">
+                <div className="div-par">
+                  <h2 className="title-par">Rating: </h2>
+                  {videogame.rating >= 4 ? (
+                    <h3
+                      className="rating"
+                      style={{ border: "2px solid green", color: "green" }}
+                    >
+                      {Math.trunc(videogame.rating * 20)}
+                    </h3>
+                  ) : videogame.rating >= 3 ? (
+                    <h3
+                      className="rating"
+                      style={{ border: "2px solid yellow", color: "yellow" }}
+                    >
+                      {Math.trunc(videogame.rating * 20)}
+                    </h3>
+                  ) : (
+                    <h3
+                      className="rating"
+                      style={{ border: "2px solid red", color: "red" }}
+                    >
+                      {Math.trunc(videogame.rating * 20)}
+                    </h3>
+                  )}
+                </div>
+                <div className="div-par">
+                  <h2 className="title-par">Platforms: </h2>
+                  <h3 className="par-info">{videogame.platforms}</h3>
+                </div>
+                <div className="div-par">
+                  <h2 className="title-par">Genres: </h2>
+                  <h3 className="par-info">{videogame.genres}</h3>
+                </div>
+              </div>
+            </div>
+            <div className="detail-description">
+              <h1 className="detail-title">{videogame.name}</h1>
+              <p className="description-info">{videogame.description}</p>
+            </div>
+          </div>
         </div>
       )}
     </>

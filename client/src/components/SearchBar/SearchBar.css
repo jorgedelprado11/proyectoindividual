@@ -1,8 +1,18 @@
-.searchbar {
+.searchbar-container {
+  display: flex;
+  flex-direction: row;
   margin: 2rem;
   border: none;
   padding: 0.8rem;
   width: 15rem;
   line-height: 2rem;
   margin-bottom: 2rem;
+}
+.searchbar {
+  margin-right: 1.2rem;
+  border-radius: 0.3rem;
+}
+.searchbar-btn {
+  border-radius: 0.3rem;
+  box-shadow: none;
 }

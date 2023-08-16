@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { originFilter } from "../../redux/actions/actions";
+import "./Filters.css";
 
 const FilterOrigin = () => {
   const dispatch = useDispatch();
@@ -12,14 +13,17 @@ const FilterOrigin = () => {
 
   return (
     <>
-      <select className="selector" onChange={onSelectedChange}>
-        <option value="" hidden>
-          Select Origin
-        </option>
-        <option value="AllOrigins">All Origins</option>
-        <option value="API">API</option>
-        <option value="DB">DB</option>
-      </select>
+      <div className="container-filter">
+        <label className="label">Filter By Origin: </label>
+        <select className="selector" onChange={onSelectedChange}>
+          <option value="" hidden>
+            Select
+          </option>
+          <option value="AllOrigins">All Origins</option>
+          <option value="API">API</option>
+          <option value="DB">DB</option>
+        </select>
+      </div>
     </>
   );
 };

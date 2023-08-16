@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
-      plataforms: {
+      platforms: {
         type: DataTypes.STRING,
         allowNull: false,
       },

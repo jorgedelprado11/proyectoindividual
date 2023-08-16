@@ -6,10 +6,7 @@ import { getVideogames } from "../../redux/actions/actions";
 
 import Cards from "../../components/Cards/Cards";
 import Pagination from "../../components/Pagination/Pagination";
-import FilterGenres from "./../../components/Filters/FilterGenres";
-import FilterOrigin from "./../../components/Filters/FilterOrigin";
-import OrderByName from "./../../components/Filters/OrderByName";
-import OrderByRating from "./../../components/Filters/OrderByRating";
+import Sidebar from "./../../components/Sidebar/Sidebar";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -37,25 +34,21 @@ const Home = () => {
   }, 6000);
   return (
     <div className="home">
-      <div className="container-filters">
-        <OrderByRating />
-        <OrderByName />
-        <FilterOrigin />
-        <FilterGenres />
+      <Sidebar />
+      <div className="principal">
+        <Pagination
+          gamesPerPage={gamesPerPage}
+          totalGames={totalGames}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
+
+        <Cards
+          allVideogames={allVideogames}
+          lastIndex={lastIndex}
+          firstIndex={firstIndex}
+        />
       </div>
-      <Pagination
-        gamesPerPage={gamesPerPage}
-        totalGames={totalGames}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
-      />
-
-      <Cards
-        allVideogames={allVideogames}
-        lastIndex={lastIndex}
-        firstIndex={firstIndex}
-      />
-
       {/* <Pagination
         gamesPerPage={gamesPerPage}
         totalGames={totalGames}
