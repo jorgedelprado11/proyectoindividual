@@ -57,6 +57,7 @@ const Form = () => {
       platforms: "",
       genres: [],
     });
+    alert("Your game has been created");
   };
 
   const handleCheck = (event) => {

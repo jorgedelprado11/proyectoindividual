@@ -18,9 +18,9 @@ const validation = (input) => {
   else {
     if (input.description.length < 10)
       errors.description = "The description must have more than 10 characters";
-    if (input.description.length > 70)
+    if (input.description.length > 150)
       errors.description =
-        "The description must not have more than 70 characters";
+        "The description must not have more than 150 characters";
   }
 
   //errors platforms

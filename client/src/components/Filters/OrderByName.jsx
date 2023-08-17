@@ -19,8 +19,8 @@ const OrderByName = () => {
         <option value="" hidden>
           Select
         </option>
-        <option value="Ascendente">Ascendente</option>
-        <option value="Descendente">Descendente</option>
+        <option value="Ascendente">A - Z</option>
+        <option value="Descendente">Z - A</option>
       </select>
       </div>
     </>
