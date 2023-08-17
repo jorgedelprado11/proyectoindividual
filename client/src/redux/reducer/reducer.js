@@ -23,6 +23,11 @@ let initialState = {
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_VIDEOGAMES:
+      if (state.allVideogames.length) {
+        return {
+          ...state,
+        };
+      }
       return {
         ...state,
         allVideogames: action.payload,
