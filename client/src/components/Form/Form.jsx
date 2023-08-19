@@ -4,9 +4,9 @@ import validation from "./validation";
 import { addVideogame, fetchGenres } from "../../redux/actions/actions";
 import { useDispatch, useSelector } from "react-redux";
 
+
 const Form = () => {
   const genres = useSelector((state) => state.genres);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const Form = () => {
   const [errors, setErrors] = useState({});
 
   // const [checkBox, setChexBox] = useState([]);
-
+  const [submit, setSubmit] = useState(false);
   const [input, setInput] = useState({
     name: "",
     released: "",
@@ -58,6 +58,7 @@ const Form = () => {
       genres: [],
     });
     alert("Your game has been created");
+    setSubmit(true);
   };
 
   const handleCheck = (event) => {
@@ -79,6 +80,7 @@ const Form = () => {
     });
     setErrors(validateErrors);
   };
+
 
   return (
     <>

@@ -52,7 +52,7 @@ export const getByName = (name) => {
 export const addVideogame = (videogame) => {
   // console.log(videogame);
   const endpoint = "http://localhost:3001/videogames/";
-
+  // console.log(videogame);
   return async (dispatch) => {
     const { data } = await axios.post(endpoint, videogame);
     // console.log(data);

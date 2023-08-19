@@ -30,7 +30,7 @@ const getVgDbByQuery = async (name) => {
   const videogamesDbFound = auxVgDb.map((videogame) => {
     return {
       id: videogame.id,
-      image: videogame.background_image,
+      image: videogame.image,
       name: videogame.name,
       rating: videogame.rating,
       platforms: videogame.platforms,
